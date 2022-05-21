@@ -21,16 +21,7 @@
             <div class="modal-body">
                 <form action="?p=upload_data" enctype="multipart/form-data" method="POST">
                     <table width="100%">
-                        <!-- <tr>
-                            <td> <label for="exampleInputPassword1" class="mb-3 form-label">Variabel</label></td>
-                            <td></td>
-                            <td> <select class="mb-3 form-select" aria-label="Default select example" name="Variabel" required>
-                                    <option disabled selected>-variabel-</option>
-                                    <option value="x1">X1 (Jumlah biaya)</option>
-                                    <option value="x2">X2 (jumlah pendaftar)</option>
-                                    <option value="y">Y (jumlah mahasiswa baru)</option>
-                                </select></td>
-                        </tr> -->
+
                         <tr>
                             <td> <label for="exampleInputPassword1" class="mb-3 form-label">Prodi</label></td>
                             <td></td>
@@ -49,7 +40,6 @@
                             <td> <input type="file" name="import_data" class="mb-3 form-control" id="file" aria-describedby="fileHelp" required></td>
                         </tr>
                     </table>
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

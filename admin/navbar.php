@@ -40,7 +40,7 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="?p=regresi_linear_berganda">regresi linear berganda</a>
+                <a class="nav-link active" aria-current="page" href="?p=regresi_pilih">regresi linear berganda</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="?p=hasil_perhitungan">hasil perhitungan</a>

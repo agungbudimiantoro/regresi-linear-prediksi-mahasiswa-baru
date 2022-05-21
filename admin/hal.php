@@ -46,6 +46,11 @@ if ($_SESSION['level'] != 'admin') {
   <script>
     $(document).ready(function() {
       $('#table_id').DataTable();
+      $('#table_id1').DataTable();
+      $('#table_id2').DataTable();
+      $('#table_id3').DataTable();
+      $('#table_id4').DataTable();
+      $('#table_id5').DataTable();
     });
     $('.dropdown-toggle').dropdown();
   </script>

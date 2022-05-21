@@ -96,6 +96,14 @@ if ($p == "") {
     $nav     = "prodi";
     $judul     = "prodi info";
     $ambil     = "mod_prodi/$p.php";
+} elseif ($p == "regresi_pilih") {
+    $nav     = "prodi";
+    $judul     = "prodi info";
+    $ambil     = "mod_regresi/$p.php";
+} elseif ($p == "regresi_lanjut") {
+    $nav     = "prodi";
+    $judul     = "prodi info";
+    $ambil     = "mod_regresi/$p.php";
 } else {
     $nav     = "Dashboard";
     $judul     = "dashboard";
