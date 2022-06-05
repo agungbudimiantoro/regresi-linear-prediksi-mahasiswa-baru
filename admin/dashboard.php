@@ -1,3 +1,27 @@
+<?php
+if (isset($_GET['hapus'])) {
+
+
+    $id    = htmlspecialchars($_GET['id']);
+    $query = mysqli_query($conn, "TRUNCATE TABLE x1");
+    $query = mysqli_query($conn, "TRUNCATE TABLE x2");
+    $query = mysqli_query($conn, "TRUNCATE TABLE y");
+
+    if ($query) {
+        echo "
+        <script language=javascript>
+          alert('Data Berhasil Dihapus');
+          document.location.href='?p=dashboard';
+        </script>";
+    } else {
+        echo "
+        <script language=javascript>
+          alert('Data Gagal Dihapus');
+          document.location.href='?p=dashboard';
+        </script>";
+    }
+}
+?>
 <div class="d-flex justify-content-center mb-2">
     <img src="../assets/img/logo-login.jpg" width="150px" height="150px" alt="">
 </div>
@@ -6,7 +30,16 @@
 <h3>Analisis Linear Berganda digunakan untuk melihat pengaruh dua atau lebih variabel bebas</h3>
 <br>
 <div class="d-flex justify-content-center mb-2">
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-upload"></i> Upload Data</button>
+    <?php
+    $query1 = mysqli_query($conn, "SELECT * FROM x1");
+    $data1 = mysqli_num_rows($query1);
+    if ($data1 > 0) :
+    ?>
+        <button type="button" disabled class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-upload"></i> Upload Data</button>
+    <?php else : ?>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-upload"></i> Upload Data</button>
+    <?php endif; ?>
+    <a href="?p=dashboard&hapus" name="lanjut" class="btn btn-danger">Kosongkan Data</a>
 </div>
 
 
@@ -26,11 +59,11 @@
                             <td> <label for="exampleInputPassword1" class="mb-3 form-label">Prodi</label></td>
                             <td></td>
                             <td> <select class="mb-3 form-select" aria-label="Default select example" name="prodi" required>
-                                    <option disabled selected>-prodi-</option>
+                                    <option disabled value="" selected>-prodi-</option>
                                     <?php
                                     $query = mysqli_query($conn, "SELECT * FROM prodi");
                                     while ($data = mysqli_fetch_assoc($query)) : ?>
-                                        <option value="<?= $data['kd_prodi']; ?>"><?= $data['nm_prodi']; ?></option>
+                                        <option value="<?php echo $data['kd_prodi']; ?>"><?php echo $data['nm_prodi']; ?></option>
                                     <?php endwhile; ?>
                                 </select></td>
                         </tr>

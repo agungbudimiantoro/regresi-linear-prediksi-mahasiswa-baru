@@ -72,7 +72,7 @@ if (mysqli_query($conn, $query)) {
   echo "
         <script language=javascript>
           alert('Data Gagal Dihapus');
-          document.location.href='?p=tahun_ajaran_data';
+          document.location.href='?p=prodi_data';
         </script>";
   //}
 } ?>

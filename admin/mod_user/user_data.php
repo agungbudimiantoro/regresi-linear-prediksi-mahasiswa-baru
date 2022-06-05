@@ -1,6 +1,6 @@
 <h3>Form User</h3>
 <a href="?p=user_tambah" class="btn btn-primary">Tambah Data</a>
-<a href="mod_laporan/laporan_user.php" class="btn btn-success">Cetak Laporan</a>
+<a href="../pimpinan/mod_laporan/laporan_user.php?username=<?php echo $username ?>" target="_blank" class="btn btn-success">Cetak Laporan</a>
 <br>
 <br>
 <table class="table align-items-center mb-0 display" id="table_id">
@@ -20,20 +20,20 @@
         while ($data = mysqli_fetch_assoc($query)) {
         ?><tr>
                 <td>
-                    <?= $no++ ?>
+                    <?php echo $no++ ?>
                 </td>
                 <td>
-                    <?= $data['id_user'] ?>
+                    <?php echo $data['id_user'] ?>
                 </td>
                 <td>
-                    <?= $data['username'] ?>
+                    <?php echo $data['username'] ?>
                 </td>
                 <td>
-                    <?= $data['level'] ?>
+                    <?php echo $data['level'] ?>
                 </td>
                 <td>
-                    <a href="?p=user_edit&id=<?= $data['id_user'] ?>" class="btn btn-warning">Ubah</a>
-                    <a href="?p=user_proses&id=<?= $data['id_user'] ?>" onclick="return confirm('anda yakin ingin menghapus data?')" class="btn btn-danger">Hapus</a>
+                    <a href="?p=user_edit&id=<?php echo $data['id_user'] ?>" class="btn btn-warning">Ubah</a>
+                    <a href="?p=user_proses&id=<?php echo $data['id_user'] ?>" onclick="return confirm('anda yakin ingin menghapus data?')" class="btn btn-danger">Hapus</a>
                 </td>
             </tr>
         <?php }; ?>

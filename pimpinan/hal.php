@@ -7,7 +7,8 @@ if (!$_SESSION['id_user']) {
 if ($_SESSION['level'] != 'pimpinan') {
   header("location:../index.php?pesan=gagal10");
 }
-
+$username = $_SESSION['username'];
+$nm_user = $_SESSION['nm_user'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +23,7 @@ if ($_SESSION['level'] != 'pimpinan') {
   <style>
 
   </style>
-  <title>Penerapan Sistem Informasi Eksekutif Pada Puskemas Karang Dapo</title>
+  <title>Regresi Linear</title>
 </head>
 
 <body>
@@ -30,7 +31,8 @@ if ($_SESSION['level'] != 'pimpinan') {
   <!-- navbar -->
   <?php include "navbar.php"; ?>
   <!-- end of navbar -->
-  <div class="container mt-5 mb-5" style="min-height: 405px;">
+  <div class="container mt-5 mb-5" style="min-height: 475px;">
+
     <?php include "go.php"; ?>
     <?php include $ambil; ?>
   </div>
@@ -48,16 +50,6 @@ if ($_SESSION['level'] != 'pimpinan') {
     });
     $('.dropdown-toggle').dropdown();
   </script>
-  <?php if ($p == 'laporan_obat') {
-    include "data/laporan_obat.php";
-  } elseif ($p == 'laporan_rawat_inap') {
-    include "data/laporan_rawat_inap.php";
-  } elseif ($p == 'laporan_rawat_jalan') {
-    include "data/laporan_rawat_jalan.php";
-  } else {
-    include "data/dashboard.php";
-  }
-  ?>
 </body>
 
 </html>

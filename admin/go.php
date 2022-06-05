@@ -104,6 +104,14 @@ if ($p == "") {
     $nav     = "prodi";
     $judul     = "prodi info";
     $ambil     = "mod_regresi/$p.php";
+} elseif ($p == "hasil_perhitungan") {
+    $nav     = "prodi";
+    $judul     = "prodi info";
+    $ambil     = "mod_hasil/$p.php";
+} elseif ($p == "hasil_pilih") {
+    $nav     = "prodi";
+    $judul     = "prodi info";
+    $ambil     = "mod_hasil/$p.php";
 } else {
     $nav     = "Dashboard";
     $judul     = "dashboard";

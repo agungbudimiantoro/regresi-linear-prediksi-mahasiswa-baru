@@ -12,27 +12,27 @@ $data = mysqli_fetch_assoc($query);
                 <tr>
                     <td> <label for="username" class="mb-3 form-label">ID User</label> </td>
                     <td> </td>
-                    <td> <input type="text" name="id" value="<?= $id ?>" readonly class="mb-3 form-control" id="username" aria-describedby="emailHelp" required></td>
+                    <td> <input type="text" name="id" value="<?php echo $id ?>" readonly class="mb-3 form-control" id="username" aria-describedby="emailHelp" required></td>
                 </tr>
                 <tr>
                     <td> <label for="username" class="mb-3 form-label">Username</label></td>
                     <td></td>
-                    <td> <input type="text" value="<?= $data['username'] ?>" name="username" class=" mb-3 form-control" id="username" aria-describedby="emailHelp" required></td>
+                    <td> <input type="text" value="<?php echo $data['username'] ?>" name="username" class=" mb-3 form-control" id="username" aria-describedby="emailHelp" required></td>
                 </tr>
                 <tr>
                     <td> <label for="nm_user" class="mb-3 form-label">Nama user</label></td>
                     <td></td>
-                    <td> <input type="text" name="nm_user" value="<?= $data['nm_user'] ?>" class=" mb-3 form-control" id="nm_user" aria-describedby="emailHelp" required></td>
+                    <td> <input type="text" name="nm_user" value="<?php echo $data['nm_user'] ?>" class=" mb-3 form-control" id="nm_user" aria-describedby="emailHelp" required></td>
                 </tr>
                 <tr>
                     <td> <label for="exampleInputPassword1" class="mb-3 form-label">Password</label></td>
                     <td></td>
-                    <td> <input type="password" name="password" value="<?= $data['password'] ?>" class=" mb-3 form-control" id="exampleInputPassword1" required></td>
+                    <td> <input type="password" name="password" value="<?php echo $data['password'] ?>" class=" mb-3 form-control" id="exampleInputPassword1" required></td>
                 </tr>
                 <tr>
                     <td> <label for="email" class="mb-3 form-label">Email</label></td>
                     <td></td>
-                    <td> <input type="email" name="email" value="<?= $data['email'] ?>" class=" mb-3 form-control" id="email" aria-describedby="emailHelp" required></td>
+                    <td> <input type="email" name="email" value="<?php echo $data['email'] ?>" class=" mb-3 form-control" id="email" aria-describedby="emailHelp" required></td>
                 </tr>
                 <tr>
                     <td> <label for="exampleInputPassword1" class="mb-3 form-label">Level</label></td>

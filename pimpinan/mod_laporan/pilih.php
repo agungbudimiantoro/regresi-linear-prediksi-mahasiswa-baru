@@ -1,5 +1,5 @@
-<p>Silahkan pilih prodi yang ingin di hitung menggunakan regresi liner berganda</p>
-<form action="?p=regresi_lanjut" enctype="multipart/form-data" method="POST">
+<p>Silahkan pilih prodi</p>
+<form action="mod_laporan/laporan_perhitungan.php" target="_blank" enctype="multipart/form-data" method="GET">
     <div class="row">
         <div class="col-md-6">
             <div class="mb-3">
@@ -13,7 +13,9 @@
                     <?php endwhile; ?>
                 </select>
             </div>
-            <div class="mb-3">
+            <input type="text" name="nm_user" value="<?= $nm_user ?>" hidden>
+
+            <!-- <div class="mb-3">
                 <label for="exampleInputPassword1" class="mb-3 form-label">Data Prediksi Tahun Awal</label>
                 <select class="mb-3 form-select" aria-label="Default select example" name="tahun_awal" required>
                     <option disabled value="" selected>-Pilih Tahun-</option>
@@ -34,10 +36,10 @@
                         <option value="<?php echo $data['tahun_ajaran']; ?>"><?php echo $data['tahun_ajaran']; ?></option>
                     <?php endwhile; ?>
                 </select>
-            </div>
+            </div> -->
 
 
-            <button type="submit" name="lanjut" class="btn btn-primary">Proses Prediksi</button>
+            <button type="submit" name="lanjut" class="btn btn-primary">cetak</button>
             </tr>
             </table>
 </form>

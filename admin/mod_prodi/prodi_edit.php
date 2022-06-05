@@ -12,12 +12,12 @@ $data = mysqli_fetch_assoc($query);
                 <tr>
                     <td> <label for="username" class="mb-3 form-label">Kode Prodi</label> </td>
                     <td> </td>
-                    <td> <input type="text" name="id" value="<?= $id ?>" readonly class="mb-3 form-control" id="username" aria-describedby="emailHelp" required></td>
+                    <td> <input type="text" name="id" value="<?php echo $id ?>" readonly class="mb-3 form-control" id="username" aria-describedby="emailHelp" required></td>
                 </tr>
                 <tr>
                     <td> <label for="nm_prodi" class="mb-3 form-label">nama prodi</label></td>
                     <td></td>
-                    <td> <input type="text" name="nm_prodi" value="<?= $data['nm_prodi'] ?>" class="mb-3 form-control" id="nm_prodi" aria-describedby="emailHelp" required></td>
+                    <td> <input type="text" name="nm_prodi" value="<?php echo $data['nm_prodi'] ?>" class="mb-3 form-control" id="nm_prodi" aria-describedby="emailHelp" required></td>
                 </tr>
                 <tr>
                     <td></td>

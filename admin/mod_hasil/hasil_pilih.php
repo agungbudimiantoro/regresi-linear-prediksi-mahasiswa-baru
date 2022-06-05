@@ -1,5 +1,5 @@
 <p>Silahkan pilih prodi yang ingin di hitung menggunakan regresi liner berganda</p>
-<form action="?p=regresi_lanjut" enctype="multipart/form-data" method="POST">
+<form action="?p=hasil_perhitungan" enctype="multipart/form-data" method="POST">
     <div class="row">
         <div class="col-md-6">
             <div class="mb-3">

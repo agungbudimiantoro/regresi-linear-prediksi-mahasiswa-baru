@@ -7,6 +7,11 @@ if (!$_SESSION['id_user']) {
 if ($_SESSION['level'] != 'admin') {
   header("location:../index.php?pesan=gagal10");
 }
+$username = $_SESSION['username'];
+$level = $_SESSION['level'];
+$nm_user = $_SESSION['nm_user'];
+$id_user = $_SESSION['id_user'];
+
 
 ?>
 <!DOCTYPE html>
@@ -20,10 +25,11 @@ if ($_SESSION['level'] != 'admin') {
   <link rel="stylesheet" href="../assets/DataTables/datatables.min.css">
   <link rel="stylesheet" href="../assets/chart.js/Chart.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+
   <style>
 
   </style>
-  <title>Penerapan Sistem Informasi Eksekutif Pada Puskemas Karang Dapo</title>
+  <title>Regresi Linear</title>
 </head>
 
 <body>
@@ -43,6 +49,7 @@ if ($_SESSION['level'] != 'admin') {
   <script src="../assets/DataTables/datatables.min.js"></script>
   <script src="../assets/DataTables/js/dataTables.bootstrap5.min.js"></script>
   <script src="../assets/chart.js/Chart.bundle.min.js"></script>
+
   <script>
     $(document).ready(function() {
       $('#table_id').DataTable();
@@ -54,6 +61,7 @@ if ($_SESSION['level'] != 'admin') {
     });
     $('.dropdown-toggle').dropdown();
   </script>
+
   <?php
   // if ($p == '' || $p == 'dashboard') {
   //   include "data/dashboard.php";

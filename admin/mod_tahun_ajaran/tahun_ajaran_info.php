@@ -16,10 +16,10 @@
         while ($data = mysqli_fetch_assoc($query)) {
         ?><tr>
                 <td>
-                    <?= $no++ ?>
+                    <?php echo $no++ ?>
                 </td>
                 <td>
-                    <?= $data['tahun_ajaran'] ?>
+                    <?php echo $data['tahun_ajaran'] ?>
                 </td>
 
             </tr>

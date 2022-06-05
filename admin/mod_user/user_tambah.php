@@ -15,7 +15,7 @@ $id_hitung = $hrf . sprintf("%03s", $urt);
                 <tr>
                     <td> <label for="username" class="mb-3 form-label">ID User</label> </td>
                     <td> </td>
-                    <td> <input type="text" name="id" value="<?= $id_hitung ?>" readonly class="mb-3 form-control" id="username" aria-describedby="emailHelp" required></td>
+                    <td> <input type="text" name="id" value="<?php echo $id_hitung ?>" readonly class="mb-3 form-control" id="username" aria-describedby="emailHelp" required></td>
                 </tr>
                 <tr>
                     <td> <label for="username" class="mb-3 form-label">Username</label></td>

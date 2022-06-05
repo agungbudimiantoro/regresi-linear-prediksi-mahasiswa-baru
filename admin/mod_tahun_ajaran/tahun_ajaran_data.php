@@ -1,6 +1,6 @@
 <h3>Form Tahun Ajaran</h3>
 <a href="?p=tahun_ajaran_tambah" class="btn btn-primary">Tambah Data</a>
-<a href="mod_laporan/laporan_tahun_ajaran.php" class="btn btn-success">Cetak Laporan</a>
+<a href="../pimpinan/mod_laporan/laporan_tahun_ajaran.php?username=<?php echo $username ?>" target="_blank" class="btn btn-success">Cetak Laporan</a>
 <br>
 <br>
 <table class="table align-items-center mb-0 display" id="table_id">
@@ -18,14 +18,14 @@
         while ($data = mysqli_fetch_assoc($query)) {
         ?><tr>
                 <td>
-                    <?= $no++ ?>
+                    <?php echo $no++ ?>
                 </td>
                 <td>
-                    <?= $data['tahun_ajaran'] ?>
+                    <?php echo $data['tahun_ajaran'] ?>
                 </td>
                 <td>
-                    <a href="?p=tahun_ajaran_edit&id=<?= $data['id_thn_ajaran'] ?>" class="btn btn-warning">Ubah</a>
-                    <a href="?p=tahun_ajaran_proses&id=<?= $data['id_thn_ajaran'] ?>" onclick="return confirm('anda yakin ingin menghapus data?')" class="btn btn-danger">Hapus</a>
+                    <a href="?p=tahun_ajaran_edit&id=<?php echo $data['id_thn_ajaran'] ?>" class="btn btn-warning">Ubah</a>
+                    <a href="?p=tahun_ajaran_proses&id=<?php echo $data['id_thn_ajaran'] ?>" onclick="return confirm('anda yakin ingin menghapus data?')" class="btn btn-danger">Hapus</a>
                 </td>
             </tr>
         <?php }; ?>

@@ -43,22 +43,8 @@
             </thead>
             <tbody>
                 <?php
-                $kd_prodi = $_POST['prodi'];
+                $kd_prodi = $_GET['prodi'];
                 $no = 1;
-                $tahun_awal = $_POST['tahun_awal'];
-                $tahun_akhir = $_POST['tahun_akhir'];
-                $query = mysqli_query($conn, "SELECT * FROM prodi where kd_prodi = '$kd_prodi'");
-                $data_prodi = mysqli_fetch_assoc($query);
-                $query1 = mysqli_query($conn, "SELECT * FROM tahun_ajaran");
-                while ($row_tahun = mysqli_fetch_assoc($query1)) {
-                    if ($tahun_awal == $row_tahun['tahun_ajaran']) {
-                        $id_tahun_awal = $row_tahun['id_thn_ajaran'];
-                    };
-                    if ($tahun_akhir == $row_tahun['tahun_ajaran']) {
-                        $id_tahun_akhir = $row_tahun['id_thn_ajaran'];
-                    };
-                }
-
                 $query = mysqli_query($conn, "SELECT * FROM prodi, tahun_ajaran, x1, x2, y 
                 WHERE tahun_ajaran.id_thn_ajaran = x1.id_thn_ajaran
                 and x1.id_thn_ajaran = x2.id_thn_ajaran
@@ -66,8 +52,6 @@
                 and prodi.kd_prodi = y.kd_prodi
                 and x1.kd_prodi = x2.kd_prodi
                 and prodi.kd_prodi = '$kd_prodi'
-                and tahun_ajaran.tahun_ajaran >= '$tahun_awal'
-                and tahun_ajaran.tahun_ajaran <= '$tahun_akhir'
                 ");
                 while ($data = mysqli_fetch_assoc($query)) {
                 ?><tr>
@@ -109,10 +93,7 @@
                     </td>
                     <td>
                         <?php
-                        $tampil = mysqli_query($conn, "SELECT sum(x1.x1) as totx1 from x1, tahun_ajaran WHERE kd_prodi='$kd_prodi'
-                       and x1.id_thn_ajaran = tahun_ajaran.id_thn_ajaran
-                         and tahun_ajaran.tahun_ajaran >= '$tahun_awal'
-                                   and tahun_ajaran.tahun_ajaran <= '$tahun_akhir'");
+                        $tampil = mysqli_query($conn, "SELECT sum(x1) as totx1 from x1 WHERE kd_prodi='$_GET[prodi]'");
                         $data = mysqli_fetch_assoc($tampil);
                         $totx1 = $data["totx1"];
                         echo $totx1;
@@ -120,10 +101,7 @@
                     </td>
                     <td>
                         <?php
-                        $tampil = mysqli_query($conn, "SELECT sum(x2.x2) as totx2 from x2, tahun_ajaran WHERE kd_prodi='$kd_prodi'
-                      and x2.id_thn_ajaran = tahun_ajaran.id_thn_ajaran
-                    and tahun_ajaran.tahun_ajaran >= '$tahun_awal'
-                              and tahun_ajaran.tahun_ajaran <= '$tahun_akhir'");
+                        $tampil = mysqli_query($conn, "SELECT sum(x2) as totx2 from x2 WHERE kd_prodi='$_GET[prodi]'");
                         $data = mysqli_fetch_assoc($tampil);
                         $totx2 = $data["totx2"];
                         echo $totx2;
@@ -131,10 +109,7 @@
                     </td>
                     <td>
                         <?php
-                        $tampil = mysqli_query($conn, "SELECT sum(y.y) as toty from y, tahun_ajaran WHERE kd_prodi='$kd_prodi'
-                       and y.id_thn_ajaran = tahun_ajaran.id_thn_ajaran
-                     and tahun_ajaran.tahun_ajaran >= '$tahun_awal'
-                               and tahun_ajaran.tahun_ajaran <= '$tahun_akhir'");
+                        $tampil = mysqli_query($conn, "SELECT sum(y) as toty from y WHERE kd_prodi='$_GET[prodi]'");
                         $data = mysqli_fetch_assoc($tampil);
                         $toty = $data["toty"];
                         echo $toty;
@@ -142,10 +117,7 @@
                     </td>
                     <td>
                         <?php
-                        $tampil = mysqli_query($conn, "SELECT sum(x1.x1*x1.x1) as totx1_2 from x1, tahun_ajaran WHERE kd_prodi='$kd_prodi'
-                       and x1.id_thn_ajaran = tahun_ajaran.id_thn_ajaran
-                     and tahun_ajaran.tahun_ajaran >= '$tahun_awal'
-                               and tahun_ajaran.tahun_ajaran <= '$tahun_akhir'");
+                        $tampil = mysqli_query($conn, "SELECT sum(x1*x1) as totx1_2 from x1 WHERE kd_prodi='$_GET[prodi]'");
                         $data = mysqli_fetch_assoc($tampil);
                         $totx1_2  = $data["totx1_2"];
                         echo $totx1_2;
@@ -153,10 +125,7 @@
                     </td>
                     <td>
                         <?php
-                        $tampil = mysqli_query($conn, "SELECT sum(x2.x2*x2.x2) as totx2_2 from x2, tahun_ajaran WHERE kd_prodi='$kd_prodi'
-                       and x2.id_thn_ajaran = tahun_ajaran.id_thn_ajaran
-                     and tahun_ajaran.tahun_ajaran >= '$tahun_awal'
-                               and tahun_ajaran.tahun_ajaran <= '$tahun_akhir'");
+                        $tampil = mysqli_query($conn, "SELECT sum(x2*x2) as totx2_2 from x2 WHERE kd_prodi='$_GET[prodi]'");
                         $data = mysqli_fetch_assoc($tampil);
                         $totx2_2  = $data["totx2_2"];
                         echo $totx2_2;
@@ -164,10 +133,7 @@
                     </td>
                     <td>
                         <?php
-                        $tampil = mysqli_query($conn, "SELECT sum(x1.x1*y.y) as totx1_y from x1, y, tahun_ajaran WHERE x1.id_thn_ajaran = y.id_thn_ajaran and x1.kd_prodi=y.kd_prodi and x1.kd_prodi='$kd_prodi'
-                      and x1.id_thn_ajaran = tahun_ajaran.id_thn_ajaran
-                    and tahun_ajaran.tahun_ajaran >= '$tahun_awal'
-                              and tahun_ajaran.tahun_ajaran <= '$tahun_akhir'");
+                        $tampil = mysqli_query($conn, "SELECT sum(x1.x1*y.y) as totx1_y from x1, y WHERE x1.id_thn_ajaran = y.id_thn_ajaran and x1.kd_prodi=y.kd_prodi and x1.kd_prodi='$_GET[prodi]'");
                         $data = mysqli_fetch_assoc($tampil);
                         $totx1_y  = $data["totx1_y"];
                         echo $totx1_y;
@@ -175,10 +141,7 @@
                     </td>
                     <td>
                         <?php
-                        $tampil = mysqli_query($conn, "SELECT sum(x2.x2*y.y) as totx2_y from x2, y, tahun_ajaran WHERE x2.id_thn_ajaran = y.id_thn_ajaran and x2.kd_prodi=y.kd_prodi and x2.kd_prodi='$kd_prodi'
-                      and x2.id_thn_ajaran = tahun_ajaran.id_thn_ajaran
-                    and tahun_ajaran.tahun_ajaran >= '$tahun_awal'
-                              and tahun_ajaran.tahun_ajaran <= '$tahun_akhir'");
+                        $tampil = mysqli_query($conn, "SELECT sum(x2.x2*y.y) as totx2_y from x2, y WHERE x2.id_thn_ajaran = y.id_thn_ajaran and x2.kd_prodi=y.kd_prodi and x2.kd_prodi='$_GET[prodi]'");
                         $data = mysqli_fetch_assoc($tampil);
                         $totx2_y  = $data["totx2_y"];
                         echo $totx2_y;
@@ -186,10 +149,7 @@
                     </td>
                     <td>
                         <?php
-                        $tampil = mysqli_query($conn, "SELECT sum(x1.x1*x2.x2) as totx1_x2 from x1, x2, tahun_ajaran WHERE x1.id_thn_ajaran = x2.id_thn_ajaran and x1.kd_prodi=x2.kd_prodi and x1.kd_prodi='$kd_prodi'
-                     and x1.id_thn_ajaran = tahun_ajaran.id_thn_ajaran
-                   and tahun_ajaran.tahun_ajaran >= '$tahun_awal'
-                             and tahun_ajaran.tahun_ajaran <= '$tahun_akhir'");
+                        $tampil = mysqli_query($conn, "SELECT sum(x1.x1*x2.x2) as totx1_x2 from x1, x2 WHERE x1.id_thn_ajaran = x2.id_thn_ajaran and x1.kd_prodi=x2.kd_prodi and x1.kd_prodi='$_GET[prodi]'");
                         $data = mysqli_fetch_assoc($tampil);
                         $totx1_x2  = $data["totx1_x2"];
                         echo $totx1_x2;
@@ -215,9 +175,7 @@
             <tbody>
                 <!-- hasil -->
                 <?php
-                $tampil = mysqli_query($conn, "select count(*) as jum_res from x1, x2, tahun_ajaran where x1.id_thn_ajaran=x2.id_thn_ajaran and x1.kd_prodi=x2.kd_prodi and x1.kd_prodi='$kd_prodi'     and x1.id_thn_ajaran = tahun_ajaran.id_thn_ajaran
-              and tahun_ajaran.tahun_ajaran >= '$tahun_awal'
-                        and tahun_ajaran.tahun_ajaran <= '$tahun_akhir'");
+                $tampil = mysqli_query($conn, "select count(*) as jum_res from x1, x2 where x1.id_thn_ajaran=x2.id_thn_ajaran and x1.kd_prodi=x2.kd_prodi and x1.kd_prodi='$_GET[prodi]'");
                 $data = mysqli_fetch_assoc($tampil);
                 $n = $data["jum_res"];
 
@@ -273,10 +231,6 @@
                     $totx2_y
                 );
 
-
-                $konstanta = $A0 / $A;
-                $b1 = $A1 / $A;
-                $b2 = $A2 / $A;
                 ?>
                 <tr>
                     <td>A</td>
@@ -304,91 +258,92 @@
                 </tr>
                 <script src="../assets/math.js" type="text/javascript"></script>
                 <script>
-                    const A = <?php echo $A ?>;
+                    const A = math.det([
+                        [<?php echo $n ?>,
+                            <?php echo $totx1 ?>,
+                            <?php echo $totx2 ?>
+                        ],
+                        [
+                            <?php echo $totx1 ?>,
+                            <?php echo $totx1_2 ?>,
+                            <?php echo $totx1_x2 ?>
+                        ],
+                        [
+                            <?php echo $totx2 ?>,
+                            <?php echo $totx1_x2 ?>,
+                            <?php echo $totx2_2 ?>
+                        ]
+                    ]);
+
+                    const A0 = math.det([
+                        [<?php echo $toty ?>,
+                            <?php echo $totx1_y ?>,
+                            <?php echo $totx2_y ?>
+                        ],
+                        [<?php echo $totx1 ?>,
+                            <?php echo $totx1_2 ?>,
+                            <?php echo $totx1_x2 ?>
+                        ],
+                        [<?php echo $totx2 ?>,
+                            <?php echo $totx1_x2 ?>,
+                            <?php echo $totx2_2 ?>
+                        ]
+                    ]);
+
+
+                    const A1 = math.det([
+                        [<?php echo $n ?>,
+                            <?php echo $totx1 ?>,
+                            <?php echo $totx2 ?>
+                        ],
+                        [<?php echo $toty ?>,
+                            <?php echo $totx1_y ?>,
+                            <?php echo $totx2_y ?>
+                        ],
+                        [<?php echo $totx2 ?>,
+                            <?php echo $totx1_x2 ?>,
+                            <?php echo $totx2_2 ?>
+                        ]
+                    ]);
+
+                    const A2 = math.det([
+                        [<?php echo $n ?>,
+                            <?php echo $totx1 ?>,
+                            <?php echo $totx2 ?>
+                        ],
+                        [<?php echo $totx1 ?>,
+                            <?php echo $totx1_2 ?>,
+                            <?php echo $totx1_x2 ?>
+                        ],
+                        [<?php echo $toty ?>,
+                            <?php echo $totx1_y ?>,
+                            <?php echo $totx2_y ?>
+                        ]
+                    ]);
+
+
                     var hasilA = math.format(A, {
                         notation: 'fixed'
                     });
-                    const A0 = <?php echo $A0 ?>;
+                    var Adoc1 = document.getElementById("A").innerHTML = hasilA;
+
                     var hasilA0 = math.format(A0, {
                         notation: 'fixed'
                     });
-                    const A1 = <?php echo $A1 ?>;
+                    var Adoc2 = document.getElementById("A0").innerHTML = hasilA0;
+
                     var hasilA1 = math.format(A1, {
                         notation: 'fixed'
                     });
-                    const A2 = <?php echo $A2 ?>;
+                    var Adoc3 = document.getElementById("A1").innerHTML = hasilA1;
+
                     var hasilA2 = math.format(A2, {
                         notation: 'fixed'
                     });
-                    var Adoc = document.getElementById("A").innerHTML = hasilA;
-                    var Adoc = document.getElementById("A0").innerHTML = hasilA0;
-                    var Adoc = document.getElementById("A1").innerHTML = hasilA1;
-                    var Adoc = document.getElementById("A2").innerHTML = hasilA2;
+                    var Adoc4 = document.getElementById("A2").innerHTML = hasilA2;
                 </script>
             </tbody>
         </table>
-        <h5>Regresi Linear Berganda</h5>
-        <table class="table table-condensed table-striped">
-            <thead>
-                <tr>
-                    <th>Keterangan</th>
-                    <th>Hasil</th>
-                    <th>Rumus</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Konstanta (a)</td>
-                    <td><?php
-                        echo $konstanta;
-                        ?>
-                    </td>
-                    <td>= A0 / A<br>
-                        <?php
-                        echo "= " . $A0 . " / " . $A;
-                        echo "<br>= " . $konstanta; ?></td>
 
-                </tr>
-                <tr>
-                    <td>B1</td>
-                    <td><?php
-                        echo $b1;
-                        ?>
-                    </td>
-                    <td>= A1 / A<br>
-                        <?php
-                        echo "= " . $A1 . " / " . $A;
-                        echo "<br>= " . $b1; ?></td>
-
-                </tr>
-                <tr>
-                    <td>B2</td>
-                    <td><?php
-                        echo $b2;
-                        ?>
-                    </td>
-                    <td>= A2 / A<br>
-                        <?php
-                        echo "= " . $A2 . " / " . $A;
-                        echo "<br>= " . $b2; ?></td>
-
-                </tr>
-
-            </tbody>
-        </table>
-        <h5>Persamaan Regresi Linear Berganda </h5>
-        <div role="alert" class="alert alert-success alert-icon alert-icon-colored alert-dismissible">
-            <div class="icon"><span class="mdi mdi-check"></span></div>
-            <div class="message">
-                <?php
-                echo "<p><h4><strong>Y</strong> = a + b1 X1 + b2 X2</h4></p>";
-                echo "<p><h4><strong>Y</strong> = " . $konstanta . " + " . $b1 . " X1 + " . $b2 . " X2 </h4></p>";
-                $hitung_1 = $konstanta + $b1;
-                $hitung_2 = $b2 * 2;
-                $hitung = $hitung_1 + $hitung_2;
-                // echo "<p><h4><strong>Y</strong> = " . $hitung . "</h4></p>";
-                ?>
-            </div>
-        </div>
     </div>
 </div>

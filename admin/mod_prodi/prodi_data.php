@@ -1,6 +1,6 @@
 <h3>Form Program Studi</h3>
 <a href="?p=prodi_tambah" class="btn btn-primary">Tambah Data</a>
-<a href="mod_laporan/laporan_prodi.php" class="btn btn-success">Cetak Laporan</a>
+<a href="../pimpinan/mod_laporan/laporan_prodi.php?username=<?php echo $username ?>" target="_blank" class="btn btn-success">Cetak Laporan</a>
 <br>
 <br>
 <table class="table align-items-center mb-0 display" id="table_id">
@@ -18,14 +18,14 @@
         while ($data = mysqli_fetch_assoc($query)) {
         ?><tr>
                 <td>
-                    <?= $no++ ?>
+                    <?php echo $no++ ?>
                 </td>
                 <td>
-                    <?= $data['nm_prodi'] ?>
+                    <?php echo $data['nm_prodi'] ?>
                 </td>
                 <td>
-                    <a href="?p=prodi_edit&id=<?= $data['kd_prodi'] ?>" class="btn btn-warning">Ubah</a>
-                    <a href="?p=prodi_proses&id=<?= $data['kd_prodi'] ?>" onclick="return confirm('anda yakin ingin menghapus data?')" class="btn btn-danger">Hapus</a>
+                    <a href="?p=prodi_edit&id=<?php echo $data['kd_prodi'] ?>" class="btn btn-warning">Ubah</a>
+                    <a href="?p=prodi_proses&id=<?php echo $data['kd_prodi'] ?>" onclick="return confirm('anda yakin ingin menghapus data?')" class="btn btn-danger">Hapus</a>
                 </td>
             </tr>
         <?php }; ?>

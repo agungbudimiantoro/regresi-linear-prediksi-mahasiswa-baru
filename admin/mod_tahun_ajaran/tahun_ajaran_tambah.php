@@ -12,7 +12,7 @@ $id_hitung = $id_hitung + 1;
                 <tr>
                     <td> <label for="username" class="mb-3 form-label">ID Tahun Ajaran</label> </td>
                     <td> </td>
-                    <td> <input type="text" name="id" value="<?= $id_hitung ?>" readonly class="mb-3 form-control" id="username" aria-describedby="emailHelp" required></td>
+                    <td> <input type="text" name="id" value="<?php echo $id_hitung ?>" readonly class="mb-3 form-control" id="username" aria-describedby="emailHelp" required></td>
                 </tr>
                 <tr>
                     <td> <label for="tahun_ajaran" class="mb-3 form-label">Tahun ajaran</label></td>

@@ -1,4 +1,4 @@
-<h3><?= $judul ?></h3>
+<h3><?php echo $judul ?></h3>
 
 <br>
 <br>
@@ -21,19 +21,19 @@
         while ($data = mysqli_fetch_assoc($query)) {
         ?><tr>
                 <td>
-                    <?= $no++ ?>
+                    <?php echo $no++ ?>
                 </td>
                 <td>
-                    <?= $data['tahun_ajaran'] ?>
+                    <?php echo $data['tahun_ajaran'] ?>
                 </td>
                 <td>
-                    <?= $data['nm_prodi'] ?>
+                    <?php echo $data['nm_prodi'] ?>
                 </td>
                 <td>
-                    <?= $data['x2'] ?>
+                    <?php echo $data['x2'] ?>
                 </td>
                 <td>
-                    <?= $data['x2_2'] ?>
+                    <?php echo $data['x2_2'] ?>
                 </td>
             </tr>
         <?php }; ?>

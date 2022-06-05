@@ -17,16 +17,16 @@
         while ($data = mysqli_fetch_assoc($query)) {
         ?><tr>
                 <td>
-                    <?= $no++ ?>
+                    <?php echo $no++ ?>
                 </td>
                 <td>
-                    <?= $data['id_user'] ?>
+                    <?php echo $data['id_user'] ?>
                 </td>
                 <td>
-                    <?= $data['username'] ?>
+                    <?php echo $data['username'] ?>
                 </td>
                 <td>
-                    <?= $data['level'] ?>
+                    <?php echo $data['level'] ?>
                 </td>
 
             </tr>

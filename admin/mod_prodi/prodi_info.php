@@ -15,10 +15,10 @@
         while ($data = mysqli_fetch_assoc($query)) {
         ?><tr>
                 <td>
-                    <?= $no++ ?>
+                    <?php echo $no++ ?>
                 </td>
                 <td>
-                    <?= $data['nm_prodi'] ?>
+                    <?php echo $data['nm_prodi'] ?>
                 </td>
 
             </tr>

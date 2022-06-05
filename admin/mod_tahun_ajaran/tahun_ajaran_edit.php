@@ -12,12 +12,12 @@ $data = mysqli_fetch_assoc($query);
                 <tr>
                     <td> <label for="username" class="mb-3 form-label">ID Tahun Ajaran</label> </td>
                     <td> </td>
-                    <td> <input type="text" name="id" value="<?= $id ?>" readonly class="mb-3 form-control" id="username" aria-describedby="emailHelp" required></td>
+                    <td> <input type="text" name="id" value="<?php echo $id ?>" readonly class="mb-3 form-control" id="username" aria-describedby="emailHelp" required></td>
                 </tr>
                 <tr>
                     <td> <label for="tahun_ajaran" class="mb-3 form-label">Tahun ajaran</label></td>
                     <td></td>
-                    <td> <input type="text" name="tahun_ajaran" value="<?= $data['tahun_ajaran'] ?>" class="mb-3 form-control" id="tahun_ajaran" aria-describedby="emailHelp" required></td>
+                    <td> <input type="text" name="tahun_ajaran" value="<?php echo $data['tahun_ajaran'] ?>" class="mb-3 form-control" id="tahun_ajaran" aria-describedby="emailHelp" required></td>
                 </tr>
                 <tr>
                     <td></td>
